@@ -12,6 +12,7 @@ class KtActivity : Activity() {
         setContentView(R.layout.activity_client)
     }
 
+    @ObsoleteCoroutinesApi
     override fun onStart() {
         val singleThreadContext = newSingleThreadContext("singleThread")
         val jobs = List(100) {
@@ -22,7 +23,6 @@ class KtActivity : Activity() {
                     Thread.sleep(100)
                     println("in IO: ${Thread.currentThread().name}")
                 }
-
                 println("in launch end: ${Thread.currentThread().name}")
             }
         }
